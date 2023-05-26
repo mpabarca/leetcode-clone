@@ -3,7 +3,7 @@ import React from 'react';
 type LoginProps = {};
 
 const Login:React.FC<LoginProps> = () => {
-    
+
     return(
         <form className='space-y-6 px-6 pb-5'>
             <h3 className='text-xl font-medium text-white'>Sign in to LeetClone</h3>
