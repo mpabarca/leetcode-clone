@@ -5,16 +5,12 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
 import { useRouter } from 'next/router';
+import { initialFormState } from '@/common/initialStates';
 
 interface SignupProps {};
-const initialFormState: Form = {
-    email: '',
-    displayName: '',
-    password: ''
-};
 
 const Signup:React.FC<SignupProps> = () => {
-    const [form, setForm] = useState<Form>(initialFormState);
+    const [form, setForm] = useState<Form>({...initialFormState, displayName: ''});
     const obligatoryFieldsValidation = !form.email || !form.password || !form.displayName;
 
     let authModal = useRecoilValue(authModalState);
