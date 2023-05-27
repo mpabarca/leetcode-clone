@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-type ResetPasswordProps = {};
+interface ResetPasswordProps {};
 
 const ResetPassword:React.FC<ResetPasswordProps> = () => {
     

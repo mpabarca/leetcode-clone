@@ -2,7 +2,7 @@ import { authModalState } from '@/recoil/authModalAtom';
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-type LoginProps = {};
+interface LoginProps {};
 
 const Login:React.FC<LoginProps> = () => {
     let authModal = useRecoilValue(authModalState);

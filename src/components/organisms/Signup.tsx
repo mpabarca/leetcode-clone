@@ -1,54 +1,94 @@
+import { Form } from '@/common/types';
 import { authModalState } from '@/recoil/authModalAtom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '@/firebase/firebase';
+import { useRouter } from 'next/router';
 
-type SignupProps = {};
+interface SignupProps {};
+const initialFormState: Form = {
+    email: '',
+    displayName: '',
+    password: ''
+};
 
 const Signup:React.FC<SignupProps> = () => {
+    const [form, setForm] = useState<Form>(initialFormState);
+    const obligatoryFieldsValidation = !form.email || !form.password || !form.displayName;
+
     let authModal = useRecoilValue(authModalState);
     const setAuthModalState = useSetRecoilState(authModalState);
+
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+
+    const router = useRouter();
 
     const handleClickLogin = () => {
         setAuthModalState({...authModal, type: 'login'});
     };
 
+    const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setForm({...form, [e.target.name]: e.target.value})
+    };
+
+    const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        //Add another type of validation error - maybe Yup
+        if(obligatoryFieldsValidation) return alert('Please fill all the fields');
+        try {
+            // put loading and use one from firebase
+            const newUser = await createUserWithEmailAndPassword(form.email, form.password);
+            if(!newUser) return;
+
+            router.push('/');
+        } catch(error: any) {
+            // use one from firebase
+            alert(error.message);
+        } finally {
+
+        }
+    };
+
+    useEffect(() => {
+        // Add a different template or page to error messages
+        if(error) alert(error.message);
+    }, [error]);
+
     return(
-        <form className='space-y-6 px-6 pb-5'>
+        <form className='space-y-6 px-6 pb-5' onSubmit={handleRegisterSubmit}>
             <h3 className='text-xl font-medium text-white'>Sign up to LeetClone</h3>
             <div>
                 <label htmlFor='email' className='text-sm font-medium block mb-2 text-gray-300'>
                     Your Email
                 </label>
-                <input type='email' name='email' id='email'
+                <input type='email' name='email' id='email' placeholder='name@company.com' onChange={handleChangeInput}
                     className='border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
                         bg-gray-600 border-gray-500 placeholder-gray-400 text-white'
-                    placeholder='name@company.com'
                 />
             </div>
             <div>
                 <label htmlFor='displayName' className='text-sm font-medium block mb-2 text-gray-300'>
                     Display Name
                 </label>
-                <input type='displayName' name='displayName' id='displayName'
+                <input type='displayName' name='displayName' id='displayName'placeholder='John Doe' onChange={handleChangeInput}
                     className='border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
                         bg-gray-600 border-gray-500 placeholder-gray-400 text-white'
-                    placeholder='John Doe'
                 />
             </div>
             <div>
                 <label htmlFor='password' className='text-sm font-medium block mb-2 text-gray-300'>
                     Your Password
                 </label>
-                <input type='password' name='password' id='password'
+                <input type='password' name='password' id='password' placeholder='**********' onChange={handleChangeInput}
                     className='border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
                         bg-gray-600 border-gray-500 placeholder-gray-400 text-white'
-                    placeholder='**********'
                 />
             </div>
             <button type='submit' className='w-full text-white focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5
                 text-center bg-brand-orange hover:bg-brand-orange-s'
             >
-                Register
+                {loading ? 'Loading ...' : 'Register'}
             </button>
             <div className='text-sm font-medium text-white'>
                 Already have an account?

@@ -6,7 +6,7 @@ import ResetPassword from './ResetPassword';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { authModalState } from '@/recoil/authModalAtom';
 
-type AuthModalProps = {};
+interface AuthModalProps {};
 
 function useCloseModal() {
 	const setAuthModal = useSetRecoilState(authModalState);
