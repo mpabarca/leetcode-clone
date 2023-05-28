@@ -1,15 +1,13 @@
-import Navbar from '@/components/molecules/Navbar'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import TopBar from '@/components/molecules/TopBar'
+import Table from '@/components/organisms/Table';
 
 const Home = () => {
   return (
-    <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}>
-      <Navbar />
-      <h1>New page leet code clone</h1>
+    <main className='bg-dark-layer-2 min-h-screen'>
+      <TopBar />
+      <Table />
     </main>
   )
-}
+};
 
 export default Home;
