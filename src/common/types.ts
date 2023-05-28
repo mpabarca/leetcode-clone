@@ -12,3 +12,8 @@ export type Problem = {
 	order: number;
 	videoId?: string;
 };
+
+export type YoutubePlayer = {
+    isOpen: boolean;
+    videoId: string;
+};
