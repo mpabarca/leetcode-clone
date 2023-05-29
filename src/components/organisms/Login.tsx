@@ -6,6 +6,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 interface LoginProps {};
 
@@ -32,7 +33,7 @@ const Login:React.FC<LoginProps> = () => {
 
     const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(obligatoryFieldsValidation) return alert('Please fill all fields');
+        if(obligatoryFieldsValidation) return toast.error('Please fill all fields', {position: 'top-center', autoClose: 3000});
         try {
             const user = await signInWithEmailAndPassword(form.email, form.password);
             if(!user) return;
@@ -45,8 +46,7 @@ const Login:React.FC<LoginProps> = () => {
     };
 
     useEffect(() => {
-        // Add a different template or page to error messages
-        if(error) alert(error.message);
+        if(error) toast.error(error.message, {position: 'top-center', autoClose: 3000});
     }, [error]);
 
     return(

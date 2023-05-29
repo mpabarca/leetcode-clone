@@ -6,6 +6,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
 import { useRouter } from 'next/router';
 import { initialFormState } from '@/common/initialStates';
+import { toast } from 'react-toastify';
 
 interface SignupProps {};
 
@@ -31,12 +32,11 @@ const Signup:React.FC<SignupProps> = () => {
     const handleRegisterSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         //Add another type of validation error - maybe Yup
-        if(obligatoryFieldsValidation) return alert('Please fill all the fields');
+        if(obligatoryFieldsValidation) return toast.error('Please fill all fields', {position: 'top-center', autoClose: 3000});
         try {
             // put loading and use one from firebase
             const newUser = await createUserWithEmailAndPassword(form.email, form.password);
             if(!newUser) return;
-
             router.push('/');
         } catch(error: any) {
             console.error(error.message);
@@ -46,8 +46,7 @@ const Signup:React.FC<SignupProps> = () => {
     };
 
     useEffect(() => {
-        // Add a different template or page to error messages
-        if(error) alert(error.message);
+        if(error) toast.error(error.message, {position: 'top-center', autoClose: 3000});
     }, [error]);
 
     return(
