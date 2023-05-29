@@ -71,7 +71,7 @@ const Login:React.FC<LoginProps> = () => {
                 />
             </div>
             <button type='submit' className='w-full text-white focus:ring-blue-500 font-medium rounded-lg text-sm px-5 py-2.5
-                text-center bg-brand-orange hover:bg-brand-orange-s'
+                text-center bg-dark-orange hover:bg-brand-orange-s'
             >
                 {loading ? 'Loading ...' : 'Log In'}
             </button>

@@ -22,13 +22,18 @@ module.exports = {
 				"gray-8": "rgb(38, 38, 38)",
 				"dark-gray-8": "rgb(219, 219, 219)",
 				"brand-orange": "rgb(255 161 22)",
-				"brand-orange-s": "rgb(193, 122, 15)",
 				"dark-yellow": "rgb(255 192 30)",
 				"dark-pink": "rgb(255 55 95)",
 				olive: "rgb(0, 184, 163)",
 				"dark-green-s": "rgb(44 187 93)",
 				"dark-blue-s": "rgb(10 132 255)",
+				"dark-blue": "#141416",
+				"dark-brown": "#0e0e0e",
+				"dark-orange": "#e9691e"
 			},
+			backgroundImage: {
+				"hero-pattern": "url('/planet.jpg')",
+			}
 		},
 	},
 	plugins: [],
