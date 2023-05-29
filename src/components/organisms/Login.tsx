@@ -38,7 +38,7 @@ const Login:React.FC<LoginProps> = () => {
             if(!user) return;
             router.push('/');
         } catch (error: any) {
-            alert(error.message);
+            console.error(error.message);
         } finally {
             console.log('done');
         }

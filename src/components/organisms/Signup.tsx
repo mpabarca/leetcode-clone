@@ -39,8 +39,7 @@ const Signup:React.FC<SignupProps> = () => {
 
             router.push('/');
         } catch(error: any) {
-            // use one from firebase
-            alert(error.message);
+            console.error(error.message);
         } finally {
 
         }
