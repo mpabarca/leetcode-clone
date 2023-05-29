@@ -9,7 +9,7 @@ const Table:React.FC<TableProps> = () => {
     return (
         <>
             <h1 className='text-2xl text-center text-white dark:text-gray-400 font-medium uppercase mt-10 mb-5'>
-                &ldquo; QUALITY OVER QUANTITY &rdquo; 👇
+                Problems
             </h1>
             <div className='relative overflow-x-auto mx-auto px-6 pb-10'>
                 <table className='text-sm text-left text-gray-500 dark:text-gray-400 sm:w-7/12 w-full max-w-[1200px] mx-auto'>

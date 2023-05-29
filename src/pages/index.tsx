@@ -3,7 +3,7 @@ import Table from '@/components/organisms/Table';
 
 const Home = () => {
   return (
-    <main className='bg-dark-layer-2 min-h-screen'>
+    <main className='bg-dark-brown min-h-screen'>
       <TopBar />
       <Table />
     </main>
