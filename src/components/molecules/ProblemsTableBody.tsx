@@ -29,7 +29,7 @@ const ProblemsTableBody:React.FC<ProblemsTableBodyProps> = () => {
                 return (
                     <tr key={`row-table-id-${index}`} className={`${index % 2 == 1 ? "bg-dark-layer-1" : ""}`}>
                         <th className='px-2 py-4 font-medium whitespace-nowrap text-dark-green-s'>
-                            <BsCheckCircle fontSize={'18'} width='18' className='block m-auto' />
+                            <BsCheckCircle fontSize={'18'} width='18' />
                         </th>
                         <td className='px-6 py-4'>
                             <Link href={`/problems/${problem.id}`} className=' hover:text-dark-blue-s cursor-pointer'>

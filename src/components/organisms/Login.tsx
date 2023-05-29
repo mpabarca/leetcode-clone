@@ -76,13 +76,13 @@ const Login:React.FC<LoginProps> = () => {
                 {loading ? 'Loading ...' : 'Log In'}
             </button>
             <button className='flex w-full justify-end' onClick={handleClickResetPassword}>
-                <a href='#' className='text-sm block text-brand-orange hover:underline w-full text-right'>
+                <a href='#' className='text-sm block text-white hover:underline w-full text-right'>
                     Forgot Password?
                 </a>
             </button>
             <div className='text-sm font-medium text-gray-500'>
                 Not registered?
-                <a href='#' className='text-blue-700 hover:underline pl-1' onClick={handleClickSignUp}>
+                <a href='#' className='text-white hover:underline pl-1' onClick={handleClickSignUp}>
                     Create account
                 </a>
             </div>

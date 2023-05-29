@@ -9,12 +9,12 @@ const Table:React.FC<TableProps> = () => {
     return (
         <>
             <h1 className='text-2xl text-center text-white dark:text-gray-400 font-medium uppercase mt-10 mb-5'>
-                Problems
+                Problems 💻
             </h1>
-            <div className='relative overflow-x-auto mx-auto px-6 pb-10'>
-                <table className='text-sm text-left text-gray-500 dark:text-gray-400 sm:w-7/12 w-full max-w-[1200px] mx-auto'>
+            <div className='relative overflow-x-auto mx-auto mt-5 px-6 pb-10'>
+                <table className='text-sm text-left text-gray-500 dark:text-gray-400 sm:w-10/12 w-full max-w-[1500px] mx-auto'>
                     {!loadingProblems && (
-                        <thead className='text-xs text-white uppercase dark:text-gray-400 border-b '>
+                        <thead className='text-s text-white uppercase dark:text-gray-400 border-b'>
                             <tr>
                                 <th scope='col' className='px-1 py-3 w-0 font-medium'>
                                     Status

@@ -25,9 +25,9 @@ const TopBar:React.FC<TopBarProps> = () => {
     };
 
     return (
-        <nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-layer-1 text-dark-gray-7'>
+        <nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-brown text-dark-gray-7'>
 			<div className={`flex w-full items-center justify-between max-w-[1200px] mx-auto`}>
-				<Link href='/' className='h-[22px] flex-1'>
+				<Link href='/' className='h-[30px] flex-1'>
 					<img src='/logo-full.png' alt='Logo' className='h-full' />
 				</Link>
 
@@ -44,9 +44,9 @@ const TopBar:React.FC<TopBarProps> = () => {
 					}
                     {user &&
                         <div className='cursor-pointer group relative'>
-                            <Image src='/avatar.png' alt='Avatar' width={30} height={30} className='rounded-full' />
+                            <Image src='/avatar.png' alt='Avatar' width={35} height={35} className='rounded-full' />
                             <div
-                                className='absolute top-10 left-2/4 -translate-x-2/4  mx-auto bg-dark-layer-1 text-brand-orange p-2 rounded shadow-lg 
+                                className='absolute top-10 left-2/4 -translate-x-2/4  mx-auto bg-dark-layer-1 text-dark-orange p-2 rounded shadow-lg 
                                 z-40 group-hover:scale-100 scale-0 
                                 transition-all duration-300 ease-in-out'
                             >

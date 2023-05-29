@@ -84,9 +84,9 @@ const Signup:React.FC<SignupProps> = () => {
             >
                 {loading ? 'Loading ...' : 'Register'}
             </button>
-            <div className='text-sm font-medium text-white'>
+            <div className='text-sm font-medium text-gray-500'>
                 Already have an account?
-                <a href='#' className='text-brand-orange hover:underline pl-1' onClick={handleClickLogin}>
+                <a href='#' className='text-white hover:underline pl-1' onClick={handleClickLogin}>
                     Log In
                 </a>
             </div>
