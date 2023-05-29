@@ -26,7 +26,7 @@ const TopBar:React.FC<TopBarProps> = () => {
 
     return (
         <nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-brown text-dark-gray-7'>
-			<div className={`flex w-full items-center justify-between max-w-[1200px] mx-auto`}>
+			<div className={`flex w-full items-center justify-between max-w-[1500px] mx-auto`}>
 				<Link href='/' className='h-[30px] flex-1'>
 					<img src='/logo-full.png' alt='Logo' className='h-full' />
 				</Link>
