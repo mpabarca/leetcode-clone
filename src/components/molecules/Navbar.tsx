@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import { authModalState } from '@/recoil/authModalAtom';
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -16,7 +16,7 @@ const Navbar:React.FC<NavbarProps> = () => {
     return (
         <div className='flex items-center justify-between sm:px-12 px-2 md:px-24 py-5'>
             <Link href='/' className='flex items-center justify-center h-[30px]'>
-                <img src='/logo-full.png' alt='Logo' className='h-full' />
+                <Image src='/logo-full.png' alt='Lettcode Logo' width={130} height={100} />
             </Link>
             <div className='flex items-center'>
                 <button className='bg-dark-orange text-white px-2 py-1 sm:px-4 rounded-md text-m font-medium border-2 border-transparent

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { auth } from '@/firebase/firebase';
 import Link from 'next/link';
 import React from 'react';
@@ -28,7 +27,7 @@ const TopBar:React.FC<TopBarProps> = () => {
         <nav className='relative flex h-[50px] w-full shrink-0 items-center px-5 bg-dark-brown text-dark-gray-7'>
 			<div className={`flex w-full items-center justify-between max-w-[1500px] mx-auto`}>
 				<Link href='/' className='h-[30px] flex-1'>
-					<img src='/logo-full.png' alt='Logo' className='h-full' />
+					<Image src='/logo-full.png' alt='Logo' width={130} height={200} />
 				</Link>
 
 				<div className='flex items-center space-x-4 flex-1 justify-end'>
