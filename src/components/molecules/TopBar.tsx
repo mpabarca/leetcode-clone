@@ -7,10 +7,19 @@ import { authModalState } from '@/recoil/authModalAtom';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Logout from './Logout';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { BsList } from 'react-icons/bs';
 
-interface TopBarProps {};
+import { FiRefreshCcw } from "react-icons/fi";
+import { MdTimer } from "react-icons/md";
+import SignInIcon from '../atoms/SignInIcon';
+import UserIcon from '../atoms/UserIcon';
 
-const TopBar:React.FC<TopBarProps> = () => {
+interface TopBarProps {
+    isProblemPage?: boolean;
+};
+
+const TopBar:React.FC<TopBarProps> = ({isProblemPage}) => {
     const [user] = useAuthState(auth);
     let authModal = useRecoilValue(authModalState);
     const setAuthModalState = useSetRecoilState(authModalState);
@@ -30,29 +39,22 @@ const TopBar:React.FC<TopBarProps> = () => {
 					<Image src='/logo-full.png' alt='Logo' width={130} height={200} />
 				</Link>
 
+                {isProblemPage &&
+                    <>
+                        <FaChevronLeft />
+                        <BsList />
+                        <FaChevronRight />
+                    </>
+                }
 				<div className='flex items-center space-x-4 flex-1 justify-end'>
-					{!user &&
-                        <a 
-                            className='bg-dark-fill-3 py-1 px-2 cursor-pointer rounded border-2 border-transparent
-                            hover:text-brand-orange hover:bg-white hover:border-2 hover:border-brand-orange
-                            transition duration-300 ease-in-out' 
-                            onClick={(e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => handleClickLogin(e)}
-                        >
-                            Sign In
-                        </a>
-					}
-                    {user &&
-                        <div className='cursor-pointer group relative'>
-                            <Image src='/avatar.png' alt='Avatar' width={35} height={35} className='rounded-full' />
-                            <div
-                                className='absolute top-10 left-2/4 -translate-x-2/4  mx-auto bg-dark-layer-1 text-dark-orange p-2 rounded shadow-lg 
-                                z-40 group-hover:scale-100 scale-0 
-                                transition-all duration-300 ease-in-out'
-                            >
-                                <p className='text-sm'>{user.email}</p>
-                            </div>
-                    </div>
-					}
+					{!user && <SignInIcon handleClickLogin={handleClickLogin} />}   
+                    {isProblemPage &&
+                        <>
+                            <FiRefreshCcw />
+                            <MdTimer/>
+                        </>
+                    }
+                    {user && user!.email && <UserIcon email={user.email} />}
                     {user && <Logout />}
 				</div>
 			</div>
